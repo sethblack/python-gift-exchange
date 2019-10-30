@@ -4,6 +4,7 @@ import os
 import random
 
 from .citydb import load_db
+from .knn import knn
 from .person import Person
 
 def main(args=None):
@@ -32,11 +33,7 @@ def main(args=None):
 
         print(current_person)
 
-        neighbor = random.choice(sorted(
-            [(p, current_person.euclidean_distance(p)) for p in people],
-            key=lambda f: f[1],
-            reverse=True
-        )[:3])
+        neighbor = random.choice(knn(current_person, people, k=3, reverse=True))
 
         people.remove(neighbor[0])
 
