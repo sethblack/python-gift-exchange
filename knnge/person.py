@@ -1,7 +1,8 @@
 import hashlib
 
 from datetime import datetime
-from citydb import lookup_city
+from .citydb import lookup_city
+
 
 class Person():
     def __init__(self, name, dob, gender, city, exchange_history):
@@ -17,10 +18,6 @@ class Person():
 
         return (age_point, gender_point, self.lat_lng[0], self.lat_lng[1])
 
-    @property
-    def age_in_days(self):
-        return (datetime.now() - self.dob).days
-
     def euclidean_distance(self, other):
         x_vector = self.vector()
         y_vector = other.vector()
@@ -32,6 +29,10 @@ class Person():
         y_vector = other.vector()
 
         return sum([abs(x - y) for x, y in zip(x_vector, y_vector)])
+
+    @property
+    def age_in_days(self):
+        return (datetime.now() - self.dob).days
 
     def __str__(self):
         return f'{self.name}: {self.__hash__()}'

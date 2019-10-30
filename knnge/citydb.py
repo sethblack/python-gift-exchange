@@ -3,6 +3,7 @@ import pickle
 
 DB = {}
 
+
 def load_db(path):
     global DB
 
@@ -20,8 +21,3 @@ def lookup_city(city):
         raise Exception('City database is not loaded. Call load_db')
 
     return DB[city.upper()]
-
-
-def dump_db(path):
-    with open(path, 'wb') as f:
-        pickle.dump(DB, f)
