@@ -1,10 +1,9 @@
 import csv
-import pickle
 
 DB = {}
 
 
-def load_db(path):
+def load_cities(path):
     global DB
 
     with open(path) as f:

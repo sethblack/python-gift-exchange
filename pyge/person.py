@@ -5,15 +5,22 @@ from .citydb import lookup_city
 
 
 class Person():
-    def __init__(self, name, dob, gender, city, exchange_history):
+    def __init__(self, name, dob, gender, city, exchange_history=None):
         self.name = name
         self.dob = datetime.strptime(dob, '%m/%d/%Y')
         self.gender = gender
         self.lat_lng = lookup_city(city)
-        self.exchange_history = exchange_history
+        self.exchange_history = exchange_history or list()
+
+    def add_history(self, other):
+        self.exchange_history.append(other)
+        other.exchange_history.append(self)
+
+    def has_history(self, other):
+        return other in self.exchange_history
 
     def vector(self):
-        age_point = self.age_in_days / 43830.
+        age_point = self.age_in_days / 43830. # C = 43830 or approx 120 years
         gender_point = 0. if self.gender == 'M' else 1.
 
         return (age_point, gender_point, self.lat_lng[0], self.lat_lng[1])
@@ -29,6 +36,12 @@ class Person():
         y_vector = other.vector()
 
         return sum([abs(x - y) for x, y in zip(x_vector, y_vector)])
+
+    def coefficient(self, other):
+        if self.has_history(other) or other.has_history(self):
+            return 0.
+
+        return 1000.
 
     @property
     def age_in_days(self):

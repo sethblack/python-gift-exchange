@@ -10,7 +10,7 @@ with open('LICENSE') as f:
     license = f.read()
 
 setup(
-    name='knnge',
+    name='pyge',
     version='1.0.0',
     description='Holiday Gift Exchange Picker Using KNN',
     long_description=readme,
@@ -19,13 +19,13 @@ setup(
     author_email='sblack@sethserver.com',
     url='https://github.com/sethblack/knn-gift-exchange',
     license=license,
-    packages=['knnge'],
-    keywords=['knn', 'ai', 'unsupervised learning', 'random', 'artificial intelligence',],
-    package_data={'knnge': ['uscities.csv',]},
+    packages=['pyge'],
+    keywords=['ai', 'unsupervised learning', 'random', 'artificial intelligence',],
+    package_data={'pyge': ['uscities.csv',]},
     include_package_data=True,
     entry_points={
         'console_scripts': [
-            'knnge=knnge.__main__:main',
+            'pyge=pyge.__main__:main',
         ],
     },
     classifiers=[
