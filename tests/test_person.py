@@ -1,4 +1,4 @@
-from .context import knnge
+from .context import pyge
 
 from unittest import TestCase
 
@@ -6,10 +6,10 @@ import datetime
 
 class PersonTests(TestCase):
     def setUp(self):
-        knnge.citydb.load_db('knnge/uscities.csv')
+        pyge.citydb.load_cities('pyge/uscities.csv')
 
     def test_init(self):
-        person = knnge.person.Person('Miles Davis', '05/26/1926', 'M', 'Alton, IL')
+        person = pyge.person.Person('Miles Davis', '05/26/1926', 'M', 'Alton, IL')
 
         self.assertEqual(person.name, 'Miles Davis')
         self.assertEqual(person.dob, datetime.datetime(1926, 5, 26))
@@ -24,7 +24,7 @@ class PersonTests(TestCase):
         today = datetime.datetime.now()
         yesterday = today - datetime.timedelta(days=3650)
 
-        person = knnge.person.Person(
+        person = pyge.person.Person(
             'Miles Davis',
             yesterday.strftime('%m/%d/%Y'),
             'M',
@@ -34,25 +34,31 @@ class PersonTests(TestCase):
         self.assertEqual(person.vector(), (0.08327629477526809, 0.0, 0.216129444, -0.500846111))
 
     def test_euclidean_distance(self):
-        person_x = knnge.person.Person('Miles Davis', '05/26/1926', 'M', 'Alton, IL')
-        person_y = knnge.person.Person('Charlie Parker', '08/29/1920', 'M', 'Kansas City, KS')
+        today = datetime.datetime.now()
+        yesterday = today - datetime.timedelta(days=3650)
+
+        person_x = pyge.person.Person('Miles Davis', yesterday.strftime('%m/%d/%Y'), 'M', 'Alton, IL')
+        person_y = pyge.person.Person('Charlie Parker', yesterday.strftime('%m/%d/%Y'), 'M', 'Kansas City, KS')
 
         ed = person_x.euclidean_distance(person_y)
 
-        self.assertEqual(ed, 0.054214132529032844)
+        self.assertEqual(ed, 0.025540398792728482)
 
     def test_l1_distance(self):
-        person_x = knnge.person.Person('Miles Davis', '05/26/1926', 'M', 'Alton, IL')
-        person_y = knnge.person.Person('Charlie Parker', '08/29/1920', 'M', 'Kansas City, KS')
+        today = datetime.datetime.now()
+        yesterday = today - datetime.timedelta(days=3650)
+
+        person_x = pyge.person.Person('Miles Davis', yesterday.strftime('%m/%d/%Y'), 'M', 'Alton, IL')
+        person_y = pyge.person.Person('Charlie Parker', yesterday.strftime('%m/%d/%Y'), 'M', 'Kansas City, KS')
 
         ld = person_x.l1_distance(person_y)
 
-        self.assertEqual(ld, 0.07455501608190737)
+        self.assertEqual(ld, 0.02673388900000004)
 
     def test_coefficient(self):
-        person_x = knnge.person.Person('Miles Davis', '05/26/1926', 'M', 'Alton, IL')
-        person_y = knnge.person.Person('Charlie Parker', '08/29/1920', 'M', 'Kansas City, KS')
-        person_z = knnge.person.Person('John Coltrane', '09/23/1926', 'M', 'Hamlet, NC')
+        person_x = pyge.person.Person('Miles Davis', '05/26/1926', 'M', 'Alton, IL')
+        person_y = pyge.person.Person('Charlie Parker', '08/29/1920', 'M', 'Kansas City, KS')
+        person_z = pyge.person.Person('John Coltrane', '09/23/1926', 'M', 'Hamlet, NC')
 
         person_x.add_history(person_y)
         person_y.add_history(person_z)
