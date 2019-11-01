@@ -8,7 +8,7 @@ from .citydb import load_cities
 from .persondb import load_people
 from .persondb import save_history
 
-def main(args=None):
+def main():
     arg_parser = argparse.ArgumentParser(description='Generate a list of people pairs.')
     arg_parser.add_argument('file', help='path to the input csv')
     args = arg_parser.parse_args()
