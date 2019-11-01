@@ -19,3 +19,7 @@ def load_people(path):
             people.append(Person(name, dob, gender, birthplace))
 
     return people
+
+
+def save_history(path, pairings):
+    pass
