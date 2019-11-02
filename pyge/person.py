@@ -8,11 +8,11 @@ SEX_MAPPING = {'M': 0., 'F': 1., 'N': .5,}
 
 
 class Person():
-    def __init__(self, name, dob, sex, city, exchange_history=None):
+    def __init__(self, name, dob, sex, city_state, exchange_history=None):
         self.name = name
         self.dob = datetime.strptime(dob, '%m/%d/%Y')
         self.sex = sex
-        self.lat_lng = lookup_city(city)
+        self.lat_lng = lookup_city(city_state)
         self.exchange_history = exchange_history or list()
 
     def add_history(self, other):

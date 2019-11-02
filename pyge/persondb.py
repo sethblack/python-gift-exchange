@@ -18,11 +18,11 @@ def load_people(path, history_length=3):
 
         for row in reader:
             if len(row) != 4:
-                print(f"{row} has incorrect format: expecting name, dob, gender, birthplace.", file=sys.stderr)
+                print(f"{row} has incorrect format: expecting name, dob, sex, city and state.", file=sys.stderr)
                 continue
 
-            name, dob, gender, birthplace = row
-            person = Person(name, dob, gender, birthplace)
+            name, dob, sex, city_state = row
+            person = Person(name, dob, sex, city_state)
             person.exchange_history = history.get(hash(person), [])
 
             people.append(person)
