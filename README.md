@@ -39,4 +39,17 @@ Dizzy Gillespie, Miles Davis
 Bill Evans, Dizzy Gillespie
 ```
 
+### Input CSV File Format
+
+```
+name, date of birth, sex, "city, state"
+```
+
+Any column containing a comma should be quoted with double-quotes for example, `"Austin, TX"`.
+The `Date of Birth` field is in MM/DD/YYYY format.
+`Sex` can be `M`, `F` or `N`.
+`City, State` by default only include cities in the United States. See Using Other Country Databases for more information on changing the country.
+
+---
+
 Cities database provided by [https://simplemaps.com/data/us-cities](https://simplemaps.com/data/us-cities)
