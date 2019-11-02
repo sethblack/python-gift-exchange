@@ -21,15 +21,9 @@ def main():
     people_b = list(people_static)
 
     pairs = []
-    iterations = 0
 
     while len(people_a) > 0:
-        if iterations >= 20:
-            raise Exception('Could not match set.')
-
         gifter = random.choice(people_a)
-
-        people_a.remove(gifter)
 
         weights = [(p, gifter.euclidean_distance(p), gifter.coefficient(p)) for p in people_b]
         weighted_list = []
@@ -38,14 +32,19 @@ def main():
             weighted_list.extend([w[0]] * int(w[1] * w[2]))
 
         if len(weighted_list) == 0:
-            people_a = list(people_static)
-            people_b = list(people_static)
-            pairs = []
-            iterations += 1
+            if len(pairs) == 0:
+                raise Exception('Could not match set.')
+
+            (prev_a, prev_b) = pairs.pop()
+
+            people_a.add(prev_a)
+            people_b.add(prev_b)
+
             continue
 
         giftee = random.choice(weighted_list)
 
+        people_a.remove(gifter)
         people_b.remove(giftee)
 
         pairs.append((gifter, giftee))
