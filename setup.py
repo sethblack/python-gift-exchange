@@ -8,10 +8,10 @@ with open('README.md') as f:
 
 setup(
     name='pyge',
-    version='1.0.0',
+    version='1.0.1',
     description='Python Gift Exchange Picker',
     long_description_content_type='text/markdown',
-    long_description='Python Gift',
+    long_description=readme,
     author='Seth Black',
     author_email='sblack@sethserver.com',
     url='https://github.com/sethblack/knn-gift-exchange',
