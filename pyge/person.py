@@ -23,7 +23,7 @@ class Person():
 
     def vector(self):
         age_point = self.age_in_days / 43830. # C = 43830 or approx 120 years
-        sex_point = GENDER_MAPPING[self.sex]
+        sex_point = SEX_MAPPING[self.sex]
 
         return (age_point, sex_point, self.lat_lng[0], self.lat_lng[1])
 

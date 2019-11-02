@@ -13,8 +13,6 @@ def load_people(path, history_length=3):
 
     history = load_history(path, history_length=3)
 
-    print(history)
-
     with open(path) as f:
         reader = csv.reader(f, skipinitialspace=True)
 
