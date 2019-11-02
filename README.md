@@ -59,7 +59,7 @@ Pyge saves a historical list of pairings which is used to ensure participants wi
 
 ## Full Usage
 
-```sh
+```
 usage: pyge [-h] [-s] [-n] [-c citydb] [-l historylength] file
 
 Generates a list of people pairings for a holiday gift exchange.
