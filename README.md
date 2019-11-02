@@ -21,7 +21,7 @@ pip install pyge
 
 ## Basic Usage
 
-Pyge has only one required argument and that is the path to a csv file with the people who are participating in the gift exchange. An example csv file has been provided: jazz.csv.
+Pyge has only one required argument and that is the path to a csv file with the people who are participating in the gift exchange. An example csv file has been provided: [jazz.csv](https://github.com/sethblack/py-gift-exchange/blob/master/jazz.csv).
 
 ```sh
 $ pyge /path/to/people.csv
