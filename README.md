@@ -6,11 +6,11 @@ Python Gift Exchange Picker
 
 My wife is in charge of our families' annual Secret Santa Gift Exchange. Because she, unfortunately, knows about my background in math and computer science her requirements have become more extreme. A hat containing folded pieces of paper with hand-written names is no longer sufficient. Python Gift Exchange Picker (pyge) is my third and best implementation of my wife's requirements:
 
-* It must match each person to a different person.
-* The match should not be in the same household.
-* The match should not be the same gender.
-* The match should not be in the same age group.
-* The match must not happen again for at least three years.
+- It must match each person to a different person.
+- The match should not be in the same household.
+- The match should not be the same gender.
+- The match should not be in the same age group.
+- The match must not happen again for at least three years.
 
 To accomplish this, pyge imports a list of participants along with their feature sets and transforms each participant's feature set into numerical values. Each value is then vectorized and a pairwise euclidean distance between each participant is computed; this can be represented as either a graph or a matrix - I chose a matrix. The distances are then multiplied by a per-participant "qualifier" coefficient and the results are used to build a weighted distribution. The pairs of participants are then randomly matched using the weighted distribution until either all participants have been matched or no matches can be made. If no matches can be made and there are still participants pyge will backtrack until all participants can be successfully matched or it is discovered that it is impossible to match the given set of participants.
 

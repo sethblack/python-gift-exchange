@@ -6,21 +6,18 @@ from setuptools import setup
 with open('README.md') as f:
     readme = f.read()
 
-with open('LICENSE') as f:
-    license = f.read()
-
 setup(
     name='pyge',
     version='1.0.0',
-    description='Holiday Gift Exchange Picker Using KNN',
-    long_description=readme,
+    description='Python Gift Exchange Picker',
     long_description_content_type='text/markdown',
+    long_description='Python Gift',
     author='Seth Black',
     author_email='sblack@sethserver.com',
     url='https://github.com/sethblack/knn-gift-exchange',
-    license=license,
+    license='Apache Software License',
     packages=['pyge'],
-    keywords=['ai', 'unsupervised learning', 'random', 'artificial intelligence',],
+    keywords=['ai', 'unsupervised learning', 'random', 'artificial intelligence', 'secret santa', 'gift exchange',],
     package_data={'pyge': ['uscities.csv',]},
     include_package_data=True,
     entry_points={
