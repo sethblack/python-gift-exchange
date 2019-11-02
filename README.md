@@ -57,6 +57,27 @@ The `Date of Birth` field is in MM/DD/YYYY format.
 
 Pyge saves a historical list of pairings which is used to ensure participants will not be paired for at a minimum of three exchanges. Saving history can be toggled with the `--save-history` and `--no-history` flags. The minimum number of exchanges can be modified with the `--history-length` argument.
 
+## Full Usage
+
+```sh
+usage: pyge [-h] [-s] [-n] [-c citydb] [-l historylength] file
+
+Generates a list of people pairings for a holiday gift exchange.
+
+positional arguments:
+  file                  path to the csv containing a list of people who want
+                        to be part of the celebration
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -s, --save-history    save a history file of matches
+  -n, --no-history      do not save a history file of matches
+  -c citydb, --citydb citydb
+                        path to city csv for distance calculations
+  -l historylength, --history-length historylength
+                        number of cycles before people can be paired again
+```
+
 ---
 
 Cities database provided by [https://simplemaps.com/data/us-cities](https://simplemaps.com/data/us-cities)
