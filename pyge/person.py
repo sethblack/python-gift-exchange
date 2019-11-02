@@ -4,11 +4,14 @@ from datetime import datetime
 from .citydb import lookup_city
 
 
+SEX_MAPPING = {'M': 0., 'F': 1., 'N': .5,}
+
+
 class Person():
-    def __init__(self, name, dob, gender, city, exchange_history=None):
+    def __init__(self, name, dob, sex, city, exchange_history=None):
         self.name = name
         self.dob = datetime.strptime(dob, '%m/%d/%Y')
-        self.gender = gender
+        self.sex = sex
         self.lat_lng = lookup_city(city)
         self.exchange_history = exchange_history or list()
 
@@ -20,9 +23,9 @@ class Person():
 
     def vector(self):
         age_point = self.age_in_days / 43830. # C = 43830 or approx 120 years
-        gender_point = 0. if self.gender == 'M' else 1.
+        sex_point = GENDER_MAPPING[self.sex]
 
-        return (age_point, gender_point, self.lat_lng[0], self.lat_lng[1])
+        return (age_point, sex_point, self.lat_lng[0], self.lat_lng[1])
 
     def euclidean_distance(self, other):
         x_vector = self.vector()
@@ -51,7 +54,7 @@ class Person():
 
     def __hash__(self):
         return int(hashlib.md5(
-            f'{self.name}:{self.dob}:{self.gender}:{self.lat_lng}'.encode('utf-8')
+            f'{self.name}:{self.dob}:{self.sex}:{self.lat_lng}'.encode('utf-8')
         ).hexdigest()[:8], 16)
 
     def __eq__(self, other):

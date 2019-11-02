@@ -13,7 +13,7 @@ class PersonTests(TestCase):
 
         self.assertEqual(person.name, 'Miles Davis')
         self.assertEqual(person.dob, datetime.datetime(1926, 5, 26))
-        self.assertEqual(person.gender, 'M')
+        self.assertEqual(person.sex, 'M')
         self.assertEqual(person.lat_lng, [0.216129444, -0.500846111])
 
         self.assertEqual(f'{person}', 'Miles Davis: 4224271779')
