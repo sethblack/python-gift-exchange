@@ -21,7 +21,9 @@ pip install pyge
 
 ## Basic Usage
 
-Pyge has only one required argument: the path to a csv file with the people who are participating in the gift exchange. An example csv file has been provided: [jazz.csv](https://github.com/sethblack/py-gift-exchange/blob/master/jazz.csv).
+Pyge has only one required argument: the path to a csv file with the people who are participating in the gift exchange. An example csv file, [jazz.csv](https://github.com/sethblack/py-gift-exchange/blob/master/jazz.csv) has been provided.
+
+
 
 ```sh
 $ pyge /path/to/jazz.csv
@@ -42,7 +44,7 @@ Bill Evans, Dizzy Gillespie
 ### Input CSV File Format
 
 ```
-name, date of birth, sex, "city, state"
+name, date of birth, sex, "city, state or province or territory"
 ```
 
 Any column containing a comma should be quoted with double-quotes for example, `"Austin, TX"`.
@@ -51,11 +53,21 @@ The `Date of Birth` field is in `MM/DD/YYYY` format.
 
 `Sex` can be `M`, `F` or `N`.
 
-`City, State` by default only include cities in the United States. See Using Other Country Databases for more information on changing the country.
+`City` by default only includes cities in the United States. See [Using Other Country Databases]() for more information on changing the country.
 
 ## Saving History
 
 Pyge saves a historical list of pairings which is used to ensure participants will not be paired for at a minimum of three exchanges. Saving history can be toggled with the `--save-history` and `--no-history` flags. The minimum number of exchanges can be modified with the `--history-length` argument.
+
+## Using Other Country Databases
+
+You can pass a different city weight database file by using the `--citydb` argument. The city weight database is a csv file in the following format:
+
+```
+city, state or province or territory, normalized latitude, normalized longitude
+```
+
+Where normalized latitude and longitude are the values normalized between -1 and +1 (divided by 180).
 
 ## Full Usage
 
@@ -80,4 +92,4 @@ optional arguments:
 
 ---
 
-Cities database provided by [https://simplemaps.com/data/us-cities](https://simplemaps.com/data/us-cities)
+Cities database provided by [https://simplemaps.com/data/us-cities](https://simplemaps.com/data/us-cities).
