@@ -9,14 +9,48 @@ from .persondb import load_people
 from .persondb import save_history, load_history
 
 def main():
-    arg_parser = argparse.ArgumentParser(description='Generate a list of people pairs.')
-    arg_parser.add_argument('file', help='path to the input csv')
+    arg_parser = argparse.ArgumentParser(description='Generates a list of people pairings for a holiday gift exchange.')
+
+    arg_parser.add_argument('file', help='path to the csv containing a list of people who want to be part of the celebration')
+    arg_parser.add_argument(
+        '-s', '--save-history',
+        help='save a history file of matches',
+        dest='save_history',
+        action='store_true'
+    )
+    arg_parser.add_argument(
+        '-n', '--no-history',
+        help='do not save a history file of matches',
+        dest='save_history',
+        action='store_false'
+    )
+    arg_parser.add_argument(
+        '-c', '--citydb',
+        help='path to city csv for distance calculations',
+        default=None,
+        metavar='citydb',
+        dest='citydb'
+    )
+    arg_parser.add_argument(
+        '-l', '--history-length',
+        help='number of cycles before people can be paired again',
+        default=3,
+        type=int,
+        metavar='historylength',
+        dest='history_length'
+    )
+
+    arg_parser.set_defaults(save_history=True)
+
     args = arg_parser.parse_args()
 
-    module_path = os.path.dirname(inspect.getfile(pyge))
-    load_cities(os.path.join(module_path, 'uscities.csv'))
+    if args.citydb:
+        load_cities(args.citydb)
+    else:
+        module_path = os.path.dirname(inspect.getfile(pyge))
+        load_cities(os.path.join(module_path, 'uscities.csv'))
 
-    people_static = load_people(args.file)
+    people_static = load_people(args.file, args.history_length)
     people_a = list(people_static)
     people_b = list(people_static)
 
@@ -37,8 +71,8 @@ def main():
 
             (prev_a, prev_b) = pairs.pop()
 
-            people_a.add(prev_a)
-            people_b.add(prev_b)
+            people_a.append(prev_a)
+            people_b.append(prev_b)
 
             continue
 
@@ -52,7 +86,8 @@ def main():
     for (gifter, giftee) in pairs:
         print(f"{gifter.name}, {giftee.name}")
 
-    save_history(args.file, pairs)
+    if args.save_history:
+        save_history(args.file, pairs)
 
 
 if __name__ == '__main__':
