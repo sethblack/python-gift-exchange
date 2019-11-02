@@ -1,6 +1,6 @@
 # py-gift-exchange
 
-Holiday Gift Exchange Picker
+Python Gift Exchange Picker
 
 ```sh
        ((\./))
@@ -21,7 +21,7 @@ pip install pyge
 
 ## Basic Usage
 
-Pyge has only one required argument and that is the path to a csv file with the people who are participating in the gift exchange. An example csv file has been provided: [jazz.csv](https://github.com/sethblack/py-gift-exchange/blob/master/jazz.csv).
+Pyge has only one required argument: the path to a csv file with the people who are participating in the gift exchange. An example csv file has been provided: [jazz.csv](https://github.com/sethblack/py-gift-exchange/blob/master/jazz.csv).
 
 ```sh
 $ pyge /path/to/people.csv
@@ -52,6 +52,10 @@ The `Date of Birth` field is in MM/DD/YYYY format.
 `Sex` can be `M`, `F` or `N`.
 
 `City, State` by default only include cities in the United States. See Using Other Country Databases for more information on changing the country.
+
+## Saving History
+
+Pyge saves a historical list of pairings which is used to ensure participants will not be paired for at a minimum of three exchanges. Saving history can be toggled with the `--save-history` and `--no-history` flags. The minimum number of exchanges can be modified with the `--history-length` argument.
 
 ---
 
