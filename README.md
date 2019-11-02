@@ -53,7 +53,7 @@ The `Date of Birth` field is in `MM/DD/YYYY` format.
 
 `Sex` can be `M`, `F` or `N`.
 
-`City` by default only includes cities in the United States. See [Using Other Country Databases]() for more information on changing the country.
+`City` by default only includes cities in the United States. See [Using Other Country Databases](https://github.com/sethblack/py-gift-exchange#using-other-country-databases) for more information on changing the country.
 
 ## Saving History
 
