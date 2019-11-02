@@ -13,11 +13,10 @@ class Person():
         self.exchange_history = exchange_history or list()
 
     def add_history(self, other):
-        self.exchange_history.append(other)
-        other.exchange_history.append(self)
+        self.exchange_history.append(hash(other))
 
     def has_history(self, other):
-        return other in self.exchange_history
+        return hash(other) in self.exchange_history
 
     def vector(self):
         age_point = self.age_in_days / 43830. # C = 43830 or approx 120 years
@@ -38,7 +37,7 @@ class Person():
         return sum([abs(x - y) for x, y in zip(x_vector, y_vector)])
 
     def coefficient(self, other):
-        if self.has_history(other) or other.has_history(self):
+        if self.has_history(other):
             return 0.
 
         return 1000.
