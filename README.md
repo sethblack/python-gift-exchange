@@ -24,7 +24,7 @@ pip install pyge
 Pyge has only one required argument: the path to a csv file with the people who are participating in the gift exchange. An example csv file has been provided: [jazz.csv](https://github.com/sethblack/py-gift-exchange/blob/master/jazz.csv).
 
 ```sh
-$ pyge /path/to/people.csv
+$ pyge /path/to/jazz.csv
 Herbie Hancock, Billie Holiday
 Ella Fitzgerald, Herbie Hancock
 Charlie Parker, Nina Simone
@@ -47,7 +47,7 @@ name, date of birth, sex, "city, state"
 
 Any column containing a comma should be quoted with double-quotes for example, `"Austin, TX"`.
 
-The `Date of Birth` field is in MM/DD/YYYY format.
+The `Date of Birth` field is in `MM/DD/YYYY` format.
 
 `Sex` can be `M`, `F` or `N`.
 
