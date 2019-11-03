@@ -14,6 +14,8 @@ My wife is in charge of our families' annual Secret Santa Gift Exchange. Because
 
 To accomplish this, pyge imports a list of participants along with their feature sets and transforms each participant's feature set into numerical values. Each value is then vectorized and a pairwise euclidean distance between each participant is computed; this can be represented as either a graph or a matrix - I chose a matrix. The distances are then multiplied by a per-participant "qualifier" coefficient and the results are used to build a weighted distribution. The pairs of participants are then randomly matched using the weighted distribution until either all participants have been matched or no matches can be made. If no matches can be made and there are still participants pyge will backtrack until all participants can be successfully matched or it is discovered that it is impossible to match the given set of participants.
 
+If you're interested, you can read a more detailed description [here](https://www.sethserver.com/python/secret-santa-gift-exchange.html).
+
 ## Installation
 
 ```sh
