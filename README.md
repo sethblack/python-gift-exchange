@@ -1,6 +1,4 @@
-# py-gift-exchange
-
-Python Gift Exchange Picker
+# Python Gift Exchange Picker
 
 [![The Rest by taleas.com](https://www.taleas.com/static/images/comics/TheRest.png "The Rest by taleas.com")](https://www.taleas.com/comics/the-rest-of-the-christmas-presents.html)
 
