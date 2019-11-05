@@ -8,13 +8,13 @@ with open('README.md') as f:
 
 setup(
     name='pyge',
-    version='1.0.1',
+    version='1.0.2',
     description='Python Gift Exchange Picker',
     long_description_content_type='text/markdown',
     long_description=readme,
     author='Seth Black',
     author_email='sblack@sethserver.com',
-    url='https://github.com/sethblack/knn-gift-exchange',
+    url='https://github.com/sethblack/python-gift-exchange',
     license='Apache Software License',
     packages=['pyge'],
     keywords=['ai', 'unsupervised learning', 'random', 'artificial intelligence', 'secret santa', 'gift exchange',],
