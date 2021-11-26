@@ -1,6 +1,6 @@
 # Python Gift Exchange Picker
 
-[![The Rest by taleas.com](https://www.taleas.com/static/images/comics/TheRest.png "The Rest by taleas.com")](https://www.taleas.com/comics/the-rest-of-the-christmas-presents.html)
+[![The Rest by taleas.com](https://www.taleascomic.com/static/images/comics/the-rest-of-my-presents.jpg "The Rest by taleas.com")](https://www.taleascomic.com/comics/the-rest-of-the-christmas-presents.html)
 
 My wife is in charge of our families' annual Secret Santa Gift Exchange. Because she, unfortunately, knows about my background in math and computer science her requirements have become more extreme. A hat containing folded pieces of paper with hand-written names is no longer sufficient. Python Gift Exchange Picker (pyge) is my third and best implementation of my wife's requirements:
 
